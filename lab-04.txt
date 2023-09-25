@@ -1,0 +1,17 @@
+# Define the GPAs for student A and student B
+student_A <- c(2.5, 2.5, 3.0, 3.5, 3.5, 4.0, 3.5, 3.5)
+student_B <- c(2.5, 3.0, 4.0, 4.0, 4.0, 2.0, 2.5, 4.0)
+
+# Calculate the mean GPA for each student
+mean_GPA_A <- mean(student_A)
+mean_GPA_A
+mean_GPA_B <- mean(student_B)
+mean_GPA_B
+# Compare the mean GPAs and determine which student is better
+if (mean_GPA_A > mean_GPA_B) {
+  cat("Student A is better with a mean GPA of", mean_GPA_A, "\n")
+} else if (mean_GPA_B > mean_GPA_A) {
+  cat("Student B is better with a mean GPA of", mean_GPA_B, "\n")
+} else {
+  cat("Both students have the same mean GPA of", mean_GPA_A, "\n")
+}

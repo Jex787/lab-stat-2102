@@ -1,0 +1,61 @@
+#Solve-1:
+# Generate a sequence of values for Z from -4.0 to 4.0
+z_values <- seq(-4.0, 4.0, by = 0.1)
+
+# Calculate the PDF values for each Z value using the dnorm() function
+pdf_values <- dnorm(z_values, mean = 0, sd = 1)
+
+# Plot the standard normal curve
+plot(z_values, pdf_values, type = "l", lwd = 2,
+     xlab = "Z", ylab = "PDF",
+     main = "Standard Normal Distribution PDF")
+
+# Add vertical lines to highlight specific Z values
+abline(v = -2, col = "red", lty = 2)
+abline(v = 2, col = "blue", lty = 2)
+
+# Add comments about the distribution characteristics
+text(-3, 0.35, "68% within 1 SD", col = "red")
+text(3, 0.35, "68% within 1 SD", col = "blue")
+text(0, 0.15, "95% within 2 SD", col = "purple")
+text(0, 0.03, "99.7% within 3 SD", col = "green")
+
+
+#solve-2:
+# Define the parameters
+mean_X <- 1000
+variance_X <- 250000
+sd_X <- sqrt(variance_X)
+
+# Generate X values
+x_values <- seq(-5000, 3000, by = 100)
+
+# Calculate PDF of X
+pdf_X <- dnorm(x_values, mean = mean_X, sd = sd_X)
+
+# Calculate CDF of X
+cdf_X <- pnorm(x_values, mean = mean_X, sd = sd_X)
+
+# Plot normal density curve
+plot(x_values, pdf_X, type = "l", xlab = "X", ylab = "PDF", main = "Normal Distribution: X ~ N(1000,
+250000)")
+
+# Plot normal cumulative distribution curve
+plot(x_values, cdf_X, type = "l", xlab = "X", ylab = "CDF", main = "Normal Distribution: X ~ N(1000,
+250000)")
+
+
+#Slove-3:
+# Find P(X = 850)
+prob_X_850 <- pnorm(850, mean = mean_X, sd = sd_X, lower.tail = TRUE)
+print(prob_X_850)
+
+# Find P(X > 1200)
+prob_X_gt_1200 <- 1 - pnorm(1200, mean = mean_X, sd = sd_X, lower.tail = TRUE)
+print(prob_X_gt_1200)
+
+# Find P(1000 < X < 2000)
+prob_X_between <- pnorm(2000, mean = mean_X, sd = sd_X, lower.tail = TRUE) - pnorm(1000, mean = mean_X, sd = sd_X, lower.tail = TRUE)
+print(prob_X_between)
+
+

@@ -1,0 +1,56 @@
+scores <- c(77, 44, 49, 33, 38, 33, 76, 55, 68, 39, 44, 59, 36, 55, 47, 61, 53, 32, 65, 51, 29, 41, 32, 45, 83, 58, 73, 47, 49, 26, 59, 43, 66, 44, 41, 25, 39, 72,
+            37, 55, 34, 47, 66, 53, 55, 58, 49, 45, 61, 41, 55, 92, 83, 77, 45, 62, 45, 36, 75, 45, 54, 50, 51, 66, 80, 73, 57, 61, 56, 50, 45, 82, 71, 48, 46, 69,
+            38, 72, 56, 64)
+
+# I. Mean, Median, Mode, Variance, and Standard Deviation
+mean_scores <- mean(scores)
+mean_scores
+
+median_scores <- median(scores)
+median_scores
+
+mode_scores <- as.numeric(names(table(scores))[table(scores) == max(table(scores))])
+mode_scores
+
+var_scores <- var(scores)
+var_scores
+
+sd_scores <- sd(scores)
+sd_scores
+
+
+# II. Five-number summary
+five_number_summary <- summary(scores)
+five_number_summary
+
+
+# III. Frequency Distribution
+class_interval <- 10
+# Choose an appropriate class interval, you can modify it if needed
+freq_table <- table(cut(scores, breaks = seq(min(scores), max(scores) + class_interval, by = class_interval)))
+freq_table
+# Calculate cumulative frequencies
+cumulative_freq <- cumsum(freq_table)
+cumulative_freq
+
+
+# IV. Histogram and Ogive
+hist(scores, breaks = seq(min(scores), max(scores) + class_interval, by = class_interval), main = "Histogram", xlab =
+       "Scores",
+     ylab = "Frequency")
+
+plot(cumulative_freq, type = "o", main = "Ogive", xlab = "Scores", ylab = "Cumulative Frequency")
+lines(cumulative_freq, type = "o", col = "blue")
+
+
+#VI. Stem-and-leaf plot
+stem <- stem(scores)
+
+# Calculate the mode
+mode_scores <- as.numeric(names(sort(table(scores), decreasing = TRUE)[1]))
+cat("Mode:", mode_scores, "\n")
+
+# Calculate the median
+median_scores <- median(scores)
+cat("Median:", median_scores, "\n")
+

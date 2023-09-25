@@ -1,0 +1,40 @@
+# Set the seed for reproducibility
+set.seed(123)
+
+# Parameters for the true binomial distribution
+n_true <- 5  # Number of trials
+p_true <- 0.3  # Probability of success
+
+# Generate a random sample of size 1000 from the binomial distribution
+sample_size <- 1000
+random_sample <- rbinom(sample_size, size = n_true, prob = p_true)
+
+# Create a table of the observed frequencies
+observed_table <- table(random_sample)
+
+# Calculate the expected probabilities for the true binomial distribution
+expected_probs <- dbinom(0:n_true, size = n_true, prob = p_true)
+
+# Create a table of the expected frequencies
+expected_table <- sample_size * expected_probs
+
+# Print the observed and expected tables
+cat("Observed frequencies:\n")
+print(observed_table)
+
+cat("\nExpected frequencies:\n")
+print(expected_table)
+
+# Plot the observed and expected distributions
+barplot(rbind(Observed = observed_table, Expected = expected_table),
+        beside = TRUE,
+        col = c("blue", "red"),
+        names.arg = 0:n_true,
+        main = "Observed vs. Expected Binomial Distribution",
+        xlab = "Number of Successes",
+        ylab = "Frequency")
+
+# Calculate and print the chi-squared test statistic and p-value
+chi_square <- chisq.test(observed_table, p = expected_probs)
+cat("\nChi-squared test result:\n")
+print(chi_square)

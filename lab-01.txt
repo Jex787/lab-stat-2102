@@ -1,0 +1,40 @@
+# Define the data
+religion <- c("Muslim", "Hindu", "Muslim", "Hindu", "Muslim", "Christian", "Muslim", "Hindu", "Muslim", "Others", "Hindu", "Christian", "Others", "Muslim", "Hindu", "Christian", "Muslim", "Others", "Muslim", "Others")
+
+education <- c("BTech", "BEng", "MSc", "BSc", "Hons", "Primary", "Primary", "Primary", "HSC", "HSC", "HSC", "HSC", "SSC", "SSC", "SSC", "SSC", "SSC", "SSC", "SSC", "SSC")
+
+blood <- c("A+","AB+","A+","A+","AB-","AB-","B+","B+","B+","AB+","AB-","AB-
+","B+","AB+","O+","O+","O+","AB-","AB+","AB-")
+
+
+# Create a table of frequencies for religion
+blood_group_table <- table(blood)
+blood_group_table
+
+
+
+# Create a table of frequencies for religion
+religion_table <- table(religion)
+religion_table
+# Create a pie chart for religion
+pie(religion_table, labels = paste(names(religion_table), "(", religion_table, ")", sep = ""), main = "Religion Distribution")
+# Add a legend
+legend("topright", legend = names(religion_table), fill = rainbow(length(names(religion_table))))
+# Comment on the pie chart
+cat("Pie chart comment: The pie chart visually represents the distribution of different religions among the 20 people in the dataset. It shows the proportions of each religion relative to the total number of people. In this dataset, the majority of individuals follow the Muslim religion, followed by Hindu, Christian, and Others.")
+
+
+
+# Create a table of education frequencies
+education_table <- table(education)
+education_table
+# Create a bar plot
+barplot(education_table,
+        main = "Education Levels of 20 People",
+        xlab = "Education Level",
+        ylab = "Frequency",
+        col = "lightblue")
+
+# Comment on the results
+cat("Education Frequency Table:\n")
+
